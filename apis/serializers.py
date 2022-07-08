@@ -7,10 +7,20 @@ class ProjectSerializer(serializers.ModelSerializer):
         model = Projects
         fields = '__all__'
 
-class ClientSerializer(serializers.ModelSerializer):
-    #created_by = serializers.CharField(source="User.username", read_only=True)
+
+class ClientListSerializer(serializers.ModelSerializer):
+    created_by = serializers.StringRelatedField() 
 
     class Meta:
         model = Clients  
-        fields = ('id', "name", "created_at", "created_by", 'projects_set')      
+        fields = ('id', "name", "created_at", "created_by")      
+        #fields = '__all__'
+
+
+class ClientSerializer(serializers.ModelSerializer):
+    created_by = serializers.StringRelatedField() 
+    projects = serializers.StringRelatedField(many=True)    
+    class Meta:
+        model = Clients  
+        fields = ('id', "name", "created_at", "created_by", "projects")      
         #fields = '__all__'
