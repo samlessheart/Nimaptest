@@ -1,0 +1,76 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="{%static 'article/main.css'%}">
+
+    <title>Library</title>
+</head>
+
+<body>
+
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark   ">
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-xl-around " id="collapse_target">
+                <ul class="navbar-nav px-2">
+                    <li class="nav-item px-4">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    
+                    {% if user.is_authenticated %}
+                    <li class="nav-item px-4">
+                        <a class="nav-link" href="#"></a>
+                    </li>
+                    <li class="nav-item px-4">
+                        <a class="nav-link" href="#"> {{user.username}}</a>
+                    </li>
+                    
+                    
+                    {%else%}
+                    <li class="nav-item px-4">
+                        <a class="nav-link" href="{%url 'signin'%}">Log in</a>
+                    </li>
+                    {%endif%}
+
+                </ul>
+                
+            </div>
+
+        </nav>
+    </header>
+
+
+    <div class="container">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+    {% block content %}{% endblock %}
+
+
+
+    {% block jscripts %}{% endblock %}
+
+</body>
+
+</html>
