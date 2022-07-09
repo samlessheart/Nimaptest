@@ -2,6 +2,8 @@ from email import message
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -24,3 +26,9 @@ def signin(request):
     #form = UserLoginForm()
 
     return render(request, "users/signin.html", )
+
+@login_required 
+def signoout(request):
+    logout(request)
+    messages.info(request, 'You are logged out') 
+    return redirect('home')
