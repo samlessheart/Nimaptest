@@ -13,7 +13,7 @@ class ClientListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Clients  
-        fields = ('id', "name", "created_at", "created_by")      
+        fields = ('id', "client_name", "created_at", "created_by")      
         #fields = '__all__'
 
 
@@ -22,5 +22,5 @@ class ClientSerializer(serializers.ModelSerializer):
     projects = serializers.StringRelatedField(many=True)    
     class Meta:
         model = Clients  
-        fields = ('id', "name", "created_at", "created_by", "projects")      
+        fields = ('id', "client_name", "created_at", "created_by", "projects")      
         #fields = '__all__'

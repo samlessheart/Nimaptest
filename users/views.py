@@ -21,14 +21,3 @@ def signup(request):
     return render(request, "users/signup.html", context={'form':form})
 
 
-
-def signin(request):
-    #form = UserLoginForm()
-
-    return render(request, "users/signin.html", )
-
-@login_required 
-def signoout(request):
-    logout(request)
-    messages.info(request, 'You are logged out') 
-    return redirect('home')

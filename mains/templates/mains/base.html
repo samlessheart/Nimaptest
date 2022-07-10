@@ -11,12 +11,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="{%static 'article/main.css'%}">
 
-    <title>Library</title>
+    <title>Nimaptest</title>
 </head>
 
 <body>
@@ -31,16 +31,19 @@
                     <li class="nav-item px-4">
                         <a class="nav-link" href="{% url 'home' %}">Home</a>
                     </li>
-                    
+
                     {% if user.is_authenticated %}
                     <li class="nav-item px-4">
                         <a class="nav-link" href="#"></a>
                     </li>
                     <li class="nav-item px-4">
-                        <a class="nav-link" href="#"> {{user.username}}</a>
+                        <a class="nav-link" href="{%url 'myprojects'%}"> {{user.username}}</a>
                     </li>
                     
+
                     
+
+
                     {%else%}
                     <li class="nav-item px-4">
                         <a class="nav-link" href="{%url 'signin'%}">Log in</a>
@@ -48,21 +51,35 @@
                     {%endif%}
 
                 </ul>
-                
+
             </div>
 
         </nav>
     </header>
 
+    <div class="row">
+        {% if user.is_authenticated %}
+        <div>
+            <ul>
+                <li class="px-4"> <a class="nav-link" href="{%url 'registerclient'%}">Register Client </a>
 
-    <div class="container">
-        {% if messages %}
-        {% for message in messages %}
-        <div class="alert alert-{{ message.tags }}">
-            {{ message }}
+                </li>
+                <li class="px-4"> <a class="nav-link" href="{%url 'createproject'%}">Create Project </a>
+
+                </li>
+                
+            </ul>
         </div>
-        {% endfor %}
-        {% endif %}
+        {%endif%}
+        <div class="container">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
     </div>
 
     {% block content %}{% endblock %}
