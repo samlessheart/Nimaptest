@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import (fields, widgets, Textarea, NumberInput, Select, DateField,  SelectMultiple)
+from django.forms import (fields, widgets, Textarea, NumberInput, Select, DateField,  SelectMultiple, CheckboxSelectMultiple)
 from .models import Clients, Projects
 
 
@@ -18,6 +18,6 @@ class projectForm(forms.ModelForm):
         fields = ['name', 'assign_to', 'client' ]
         widgets = {
             'name': Textarea(attrs={'rows': 1,'class': 'form-control col-6'}),
-            'assign_to': SelectMultiple(attrs={'rows': 1,'class': 'form-control col-6'}),
+            'assign_to': CheckboxSelectMultiple(attrs={'rows': 1,'class': 'form-control col-6'}),
             'client': Select(attrs={'rows': 1,'class': 'form-control col-6'}),
         }

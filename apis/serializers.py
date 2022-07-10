@@ -1,9 +1,11 @@
 from dataclasses import field
+from http import client
 from rest_framework import serializers
 from mains.models import Projects, Clients
 
 class ProjectSerializer(serializers.ModelSerializer):
     assign_to = serializers.StringRelatedField(many=True) 
+    client = serializers.StringRelatedField()
     class Meta:
         model = Projects
         fields = '__all__'
