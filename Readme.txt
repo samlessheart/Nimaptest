@@ -8,6 +8,9 @@ Heroku_link - https://nimaptest.herokuapp.com/
 2)default django user auth system for resgistring users is being used
 3)Djang_rest_framework library is used for creating api
 
+
+
+
 Test problem = {below Python machine test with candidates and tell them to complete and submit. 
 
 Note :- Kindly share the Gitlab Or Github Link 

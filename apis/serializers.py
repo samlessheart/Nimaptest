@@ -3,6 +3,7 @@ from rest_framework import serializers
 from mains.models import Projects, Clients
 
 class ProjectSerializer(serializers.ModelSerializer):
+    assign_to = serializers.StringRelatedField(many=True) 
     class Meta:
         model = Projects
         fields = '__all__'
