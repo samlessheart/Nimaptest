@@ -33,17 +33,19 @@
                     </li>
 
                     {% if user.is_authenticated %}
-                    <li class="nav-item px-4">
-                        <a class="nav-link" href="#"></a>
-                    </li>
+                    
                     <li class="nav-item px-4">
                         <a class="nav-link" href="{%url 'myprojects'%}"> {{user.username}}</a>
                     </li>
+
+                    <li class="nav-item px-4">
+                        <a class="nav-link" href="{%url 'myprojects'%}"> myprojects</a>
+                    </li>              
+
+                    <li class="nav-item px-4">
+                        <a class="nav-link" href="{%url 'signout'%}"> signout</a>
+                    </li>  
                     
-
-                    
-
-
                     {%else%}
                     <li class="nav-item px-4">
                         <a class="nav-link" href="{%url 'signin'%}">Log in</a>
